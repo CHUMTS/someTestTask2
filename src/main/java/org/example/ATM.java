@@ -48,7 +48,7 @@ public class ATM {
 
     public int[] withdraw(int amount) {
         if (amount % 10 != 0) {
-            return new int[0];
+            return new int[]{-1};
         }
         Map<Banknote, Integer> toWithdraw = new HashMap<>(map);  // создаём мапу, итерируясь по которой мы узнаем,
                                                                 // хватает ли нам купюр для выдачи
@@ -72,7 +72,7 @@ public class ATM {
             amount -= banknotesToWithdraw * var.getKey().getAmount();
         }
         if (amount > 0) {  // если снялось не всё, тогда возвращаем нулевой массив
-            return new int[0];
+            return new int[]{-1};
         } else {
             map = toWithdraw;  // если снялось - обновляем кол-во купюр в АТМ и возвращаем массив купюр к снятию
         }
